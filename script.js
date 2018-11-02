@@ -1,5 +1,4 @@
 // script.js
-<link rel="shortcut icon" href="">
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -31,20 +30,20 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // FIXME: Add styling to markers
 // Use airport.png
+var ominvore = 'airport.png'
+var airportIcon = L.icon({
+    iconUrl: 'airport.png',
+    iconSize: [40, 40]
+});     
+
 var customeLayer = L.geoJson(null, {
-    pointToLayer: function(feature,latlng){
+    pointToLayer: function (feature, latlng) {
         return L.marker(latlng, {icon: airportIcon});
     }
 })
 
-var airportIcon = L.Icon({
-    iconUrl: 'airport.png',
-    iconSize: [40,40]
-});
-
-var airportLayer = omnivore.csv('airport.csv').addTo(map);
-                             
-                    
+var airportLayer = omnivore.csv('airports.csv').addTo(map);
+                                             
                              
                              
                              

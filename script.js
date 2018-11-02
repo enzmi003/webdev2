@@ -26,7 +26,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     .addTo(map);
 
 // FIXME: Load CSV data into leaflet markers
-var airportsLayer = omnivore.csv('airports.csv' , null, customeLayer);
 
 var airportIcon = L.icon({
     iconUrl: 'airport.png',
@@ -39,7 +38,9 @@ var customeLayer = L.geoJson(null  ,{
     pointToLayer: function(feature,latlng){
         return L.marker(latling,{icon: airportIcon});
     }
-}
+})
+
+var airportsLayer = omnivore.csv('airports.csv');
                              
                     
                              

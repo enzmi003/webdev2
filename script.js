@@ -1,4 +1,5 @@
 // script.js
+<link rel="shortcut icon" href="">
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -27,20 +28,21 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // FIXME: Load CSV data into leaflet markers
 
-var airportIcon = L.icon({
+
+// FIXME: Add styling to markers
+// Use airport.png
+var customeLayer = L.geoJson(null, {
+    pointToLayer: function(feature,latlng){
+        return L.marker(latlng, {icon: airportIcon});
+    }
+})
+
+var airportIcon = L.Icon({
     iconUrl: 'airport.png',
     iconSize: [40,40]
 });
 
-// FIXME: Add styling to markers
-// Use airport.png
-var customeLayer = L.geoJson(null  ,{
-    pointToLayer: function(feature,latlng){
-        return L.marker(latling,{icon: airportIcon});
-    }
-})
-
-var airportsLayer = omnivore.csv('airports.csv');
+var airportLayer = omnivore.csv('airport.csv').addTo(map);
                              
                     
                              
